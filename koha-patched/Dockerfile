@@ -12,7 +12,7 @@ MAINTAINER Oslo Public Library "digitalutvikling@gmail.com"
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBIAN_PRIORITY critical
 ENV DEBCONF_NOWARNINGS yes
-ENV REFRESHED_AT 2016-11-16
+ENV REFRESHED_AT 2017-02-22
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -q -y vim.tiny telnet screen htop curl git \
@@ -27,8 +27,8 @@ RUN apt-get update && \
 RUN echo "deb http://debian.koha-community.org/koha stable main" > /etc/apt/sources.list.d/koha.list
 RUN curl -L http://debian.koha-community.org/koha/gpg.asc | apt-key add -
 
-ENV KOHA_VERSION 16.11.02
-#ENV GITREF 80c80ca683217455221e15e0c24a81d5e60e49e0
+ENV KOHA_VERSION 16.11.04
+#ENV GITREF b161c80d01dacc654b1f1b811e52cae07e58e55a
 
 # Pull/Download Koha from GITREF or KOHA_VERSION tarball, try old_releases if not existing
 ADD ./pull.sh /root/pull.sh
@@ -36,9 +36,7 @@ RUN /root/pull.sh
 
 # Install Koha deps
 
-RUN sed -i "s/httpredir.debian.org/`curl -s -D - http://httpredir.debian.org/demo/debian/ | \
-    awk '/^Link:/ { print $2 }' | sed -e 's@<http://\(.*\)/debian/>;@\1@g'`/" /etc/apt/sources.list && \
-    apt-get update && \
+RUN apt-get update && \
     apt-get install -y koha-perldeps koha-deps make build-essential && \
     apt-get clean
 
