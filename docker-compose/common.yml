@@ -67,6 +67,7 @@ services:
     ports:
       - "6001:6001"
       - "8081:8081"
+      - "8080:8080"
     logging:
       driver: "json-file"
       options:
@@ -94,6 +95,8 @@ services:
       MYSQL_USER: "${KOHA_ADMINUSER:-admin}"
     volumes:
       - "koha_mysql_data:/var/lib/mysql"
+    ports:
+      - "3306:3306"  
     logging:
       driver: "json-file"
       options:
