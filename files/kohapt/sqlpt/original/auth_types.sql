@@ -1,30 +1,30 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES latin1 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- UNLOCK TABLES;
--- delete from biblio_framework;
--- LOCK TABLES `biblio_framework` WRITE;
+--
+-- Dumping data for table `auth_types`
+--
 
-/*!40000 ALTER TABLE `biblio_framework` DISABLE KEYS */;
+delete from auth_types;
+LOCK TABLES `auth_types` WRITE;
 
-INSERT INTO `biblio_framework` 
-(`frameworkcode`, `frameworktext`)
-VALUES
-('AMN','Analíticos de monografias'),
-('ANL','Analíticos de periódicos'),
-('MNL','Material não Livro'),
-('MON','Monografias'),
-('PER','Periódicos (Recursos contínuos)')
-on duplicate key update frameworkcode=values(frameworkcode), frameworktext=values(frameworktext);
+/*!40000 ALTER TABLE `auth_types` DISABLE KEYS */;
 
-/*!40000 ALTER TABLE `biblio_framework` ENABLE KEYS */;
+INSERT INTO `auth_types` VALUES
+('','Default','',''),
+('COR','Nome de Colectividade','210','[210a][210b][ 210c]'),
+('GEO','Nome Geográfico','215','[215a][ 215b][ 215c]'),
+('PER','Nome de Pessoa','200','[200a][ 200b][-200f]\r\n[400a][,400b]\r\n[</a> 500a][500b]'),
+('SUB','Assunto','250','[250a][ -- 250x][ -- 200y][ -- 200z]');
+
+/*!40000 ALTER TABLE `auth_types` ENABLE KEYS */;
 UNLOCK TABLES;
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

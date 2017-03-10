@@ -1,7 +1,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES latin1 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -12,13 +12,12 @@
 -- Dumping data for table `auth_tag_structure`
 --
 
-UNLOCK TABLES;
--- delete from auth_tag_structure;
+delete from auth_tag_structure;
 LOCK TABLES `auth_tag_structure` WRITE;
 
 /*!40000 ALTER TABLE `auth_tag_structure` DISABLE KEYS */;
 
-INSERT INTO `auth_tag_structure` (`authtypecode`,`tagfield`,`liblibrarian`,`libopac`,`repeatable`,`mandatory`,`authorised_value`) VALUES
+INSERT INTO `auth_tag_structure` VALUES
 ('','000','Cabeçalho','Cabeçalho',0,1,''),
 ('','001','Identificador do registo','Identificador do registo',0,0,''),
 ('','100','Dados gerais','Dados gerais',0,0,''),
@@ -81,8 +80,7 @@ INSERT INTO `auth_tag_structure` (`authtypecode`,`tagfield`,`liblibrarian`,`libo
 ('SUB','550','Referência Ver também','Referência Ver também',1,0,''),
 ('SUB','675','CDU','',0,1,''),
 ('SUB','801','Fonte de origem','Fonte de origem',1,0,''),
-('SUB','830','Nota geral do catalogador','Nota geral do catalogador',1,0,'')
-on duplicate key update authtypecode=values(authtypecode), tagfield=values(tagfield), liblibrarian=values(liblibrarian), libopac=values(libopac), repeatable=values(repeatable), mandatory=values(mandatory), authorised_value=values(authorised_value);
+('SUB','830','Nota geral do catalogador','Nota geral do catalogador',1,0,'');
 
 /*!40000 ALTER TABLE `auth_tag_structure` ENABLE KEYS */;
 UNLOCK TABLES;

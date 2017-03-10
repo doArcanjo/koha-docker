@@ -24,17 +24,32 @@ finish() {
 
 run_webinstaller() {
   if [[ -n "$KOHAVERSION" ]] ; then
-    MARCTAGSTRUCTURE=`echo -n "SELECT COUNT(*) FROM koha_$KOHA_INSTANCE.marc_tag_structure where tagfield = 008;" | koha-mysql $KOHA_INSTANCE | tail -1`
-
-    if [[ $CURRENTDBVERSION = $KOHAVERSION ]] && \
-       [[ $MARCTAGSTRUCTURE > "0" ]] ; then
-      # Koha DB already up to date!
-      echo "Koha DB is already up-to-date (version $KOHAVERSION) and MARC tag structure is nominally in place"
+    if [[ -n "$KOHA_MARC_FLAVOUR" ]] ; then
+      case "$KOHA_MARC_FLAVOUR" in
+      MARC21)
+        MARCTAGSTRUCTURE=`echo -n "SELECT COUNT(*) FROM koha_$KOHA_INSTANCE.marc_tag_structure where tagfield = 008;" | koha-mysql $KOHA_INSTANCE | tail -1`
+        ;;
+      UNIMARC)
+        MARCTAGSTRUCTURE=`echo -n "SELECT COUNT(*) FROM koha_$KOHA_INSTANCE.marc_tag_structure where tagfield = 200;" | koha-mysql $KOHA_INSTANCE | tail -1`
+        ;;
+      # TODO add NORMARK clause  
+      *)
+          RESULT="MARC_FLAVOUR: $KOHA_MARC_FLAVOUR not found!"
+          exit 1  
+      esac      
+      if [[ $CURRENTDBVERSION = $KOHAVERSION ]] && \
+         [[ $MARCTAGSTRUCTURE > "0" ]] ; then
+        # Koha DB already up to date!
+        echo "Koha DB is already up-to-date (version $KOHAVERSION) and MARC tag structure is nominally in place"
+      else
+      RESULT=`/usr/bin/perl -e "require('/installer/KohaWebInstallAutomation.pl') ; \
+          KohaWebInstallAutomation->new( uri => \"http://127.0.0.1:8081/\", user => \"${KOHA_ADMINUSER}\", pass => \"${KOHA_ADMINPASS}\", marcFlavour => \"${KOHA_MARC_FLAVOUR}\"  );"`
+        EXIT_CODE=$?
+      fi
     else
-    RESULT=`/usr/bin/perl -e "require('/installer/KohaWebInstallAutomation.pl') ; \
-        KohaWebInstallAutomation->new( uri => \"http://127.0.0.1:8081/\", user => \"${KOHA_ADMINUSER}\", pass => \"${KOHA_ADMINPASS}\" );"`
-      EXIT_CODE=$?
-    fi
+      RESULT="MISSING MARC_FLAVOUR!"
+      exit 1
+    fi  
   else
     RESULT="MISSING INSTANCENAME OR NO KOHAVERSION!"
     exit 1

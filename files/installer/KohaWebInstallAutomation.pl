@@ -32,6 +32,7 @@ sub init {
       user => 'admin',
       pass => 'secret',
       previousStep => 0,
+      marcFlavour => 'MARC21',
       mech => '',
       @args,
   );
@@ -147,7 +148,8 @@ sub step_two {
   $self->{mech}->submit_form();
   $self->{mech}->submit_form();
   $self->{mech}->follow_link( url => "install.pl?step=3&op=choosemarc" );
-  $self->{mech}->set_fields( marcflavour => "MARC21");
+  print "Using Marc flavour:" . $self->{marcFlavour} ;
+  $self->{mech}->set_fields( marcflavour => $self->{marcFlavour});
   $self->{mech}->submit_form( form_name => "frameworkselection");
   $self->{mech}->submit_form( form_name => "frameworkselection"); # yes, it occurs twice
   $self->{previousStep} = 2;

@@ -1,7 +1,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES latin1 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -11,15 +11,12 @@
 --
 -- Dumping data for table `marc_tag_structure`
 --
--- delete from marc_tag_structure;
+delete from marc_tag_structure;
 LOCK TABLES `marc_tag_structure` WRITE;
 
 /*!40000 ALTER TABLE `marc_tag_structure` DISABLE KEYS */;
 
-INSERT INTO `marc_tag_structure` 
-(`tagfield`, `liblibrarian`, `libopac`, `repeatable`, `mandatory`, `authorised_value`, `frameworkcode`)
-VALUES 
-('000','Etiqueta do registo','Etiqueta do registo',0,1,'',''),
+INSERT INTO `marc_tag_structure` VALUES ('000','Etiqueta do registo','Etiqueta do registo',0,1,'',''),
 ('001','Identificador do registo','Identificador do registo',0,0,'',''),
 ('005','Identificador da versão','Identificador da versão',0,0,'',''),
 ('010','Número internacional normalizado dos livros (ISBN)','Número internacional normalizado dos livros (ISBN)',1,0,'',''),
@@ -481,8 +478,7 @@ VALUES
 ('856','Localização e acesso electrónico ','Localização e acesso electrónico ',1,0,'','PESP'),
 ('990','Elementos KOHA','Elementos KOHA',0,0,'','PESP'),
 ('994','Estado da catalogação','Estado da catalogação',0,0,'','PESP'),
-('995','Localização e informação dos exemplares','Localização e informação dos exemplares',1,0,'','PESP')
-on duplicate key update tagfield=values(tagfield), liblibrarian=values(liblibrarian), libopac=values(libopac), repeatable=values(repeatable), mandatory=values(mandatory), authorised_value=values(authorised_value), frameworkcode=values(frameworkcode);
+('995','Localização e informação dos exemplares','Localização e informação dos exemplares',1,0,'','PESP');
 
 /*!40000 ALTER TABLE `marc_tag_structure` ENABLE KEYS */;
 UNLOCK TABLES;

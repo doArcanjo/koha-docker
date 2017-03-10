@@ -1,7 +1,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES latin1 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -12,14 +12,12 @@
 -- Dumping data for table `marc_subfield_structure`
 --
 
--- delete from marc_subfield_structure;
+delete from marc_subfield_structure;
 LOCK TABLES `marc_subfield_structure` WRITE;
 
 /*!40000 ALTER TABLE `marc_subfield_structure` DISABLE KEYS */;
 
-INSERT INTO `marc_subfield_structure` 
-(`tagfield`, `tagsubfield`, `liblibrarian`, `libopac`, `repeatable`, `mandatory`, `kohafield`, `tab`, `authorised_value`, `authtypecode`, `value_builder`, `isurl`, `hidden`, `frameworkcode`, `seealso`, `link`, `defaultvalue`, `maxlength`)
-VALUES
+INSERT INTO `marc_subfield_structure` VALUES
 ('000','@','Cabeçalho','Cabeçalho',0,1,'',0,'','','unimarc_leader.pl',0,-3,'','','','',24),
 ('001','@','Campo de controlo','Campo de controlo',0,0,'biblio.biblionumber',0,'','','',0,0,'','','','',9999),
 ('005','@','Campo de controlo','Campo de controlo',0,0,'',0,'','','marc21_field_005.pl',0,-1,'','','','',9999),
@@ -2803,8 +2801,8 @@ VALUES
 ('995','r','Tipo de documento','Tipo de documento',0,0,'items.itype',10,'itemtypes','','',0,0,'PESP',NULL,'','Programa de espectáculo',9999),
 ('995','s','Forma de aquisição','Forma de aquisição',0,0,'',10,'AQUISICAO','','',0,0,'PESP',NULL,'','',9999),
 ('995','u','Nota relativa ao exemplar','Nota relativa ao exemplar',0,0,'items.itemnotes',10,'','','',0,0,'PESP',NULL,'','',9999),
-('995','v','Número periódico','Número periódico',0,0,'',-1,'','','',0,-1,'PESP',NULL,'','',9999)
-on duplicate key update tagfield=values(tagfield), tagsubfield=values(tagsubfield), liblibrarian=values(liblibrarian), libopac=values(libopac), repeatable=values(repeatable), mandatory=values(mandatory), kohafield=values(kohafield), tab=values(tab), authorised_value=values(authorised_value), authtypecode=values(authtypecode), value_builder=values(value_builder), isurl=values(isurl), hidden=values(hidden), frameworkcode=values(frameworkcode), seealso=values(seealso), link=values(link), defaultvalue=values(defaultvalue), maxlength=values(maxlength);
+('995','v','Número periódico','Número periódico',0,0,'',-1,'','','',0,-1,'PESP',NULL,'','',9999);
+
 /*!40000 ALTER TABLE `marc_subfield_structure` ENABLE KEYS */;
 UNLOCK TABLES;
 

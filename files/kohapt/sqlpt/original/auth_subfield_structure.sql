@@ -1,7 +1,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES latin1 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -12,14 +12,12 @@
 -- Dumping data for table `auth_subfield_structure`
 --
 
--- delete from auth_subfield_structure;
+delete from auth_subfield_structure;
 LOCK TABLES `auth_subfield_structure` WRITE;
 
 /*!40000 ALTER TABLE `auth_subfield_structure` DISABLE KEYS */;
 
-INSERT INTO `auth_subfield_structure` 
-(`authtypecode`, `tagfield`, `tagsubfield`, `liblibrarian`, `libopac`, `repeatable`, `mandatory`, `tab`, `authorised_value`, `value_builder`, `seealso`, `isurl`, `hidden`, `linkid`, `kohafield`, `frameworkcode`, `defaultvalue`)
- VALUES
+INSERT INTO `auth_subfield_structure` VALUES
 ('','000','@','cabeçalho','cabeçalho',0,1,0,NULL,NULL,NULL,0,0,0,'','',''),
 ('','001','@','identificador','identificador',0,1,0,'','','',0,0,0,'','',''),
 ('','005','@','identificador','identificador',0,0,0,'','','',0,0,0,'','',''),
@@ -823,8 +821,8 @@ INSERT INTO `auth_subfield_structure`
 ('SUB','801','b','Agência','Agência',0,0,8,'','','',0,-5,0,'','',''),
 ('SUB','830','a','Texto da nota','Texto da nota',1,0,8,'','','',0,-5,0,'','',''),
 ('SUB','856','x','Nota interna','Nota interna',0,0,8,'','','',0,-5,0,'','',''),
-('SUB','856','z','Nota pública','Nota pública',1,0,8,'','','',0,-5,0,'','','')
-on duplicate key update authtypecode=values(authtypecode), tagfield=values(tagfield), tagsubfield=values(tagsubfield), liblibrarian=values(liblibrarian), libopac=values(libopac), repeatable=values(repeatable), mandatory=values(mandatory), tab=values(tab), authorised_value=values(authorised_value), value_builder=values(value_builder), seealso=values(seealso), isurl=values(isurl), hidden=values(hidden), linkid=values(linkid), kohafield=values(kohafield), frameworkcode=values(frameworkcode), defaultvalue=values(defaultvalue);
+('SUB','856','z','Nota pública','Nota pública',1,0,8,'','','',0,-5,0,'','','');
+
 /*!40000 ALTER TABLE `auth_subfield_structure` ENABLE KEYS */;
 UNLOCK TABLES;
 

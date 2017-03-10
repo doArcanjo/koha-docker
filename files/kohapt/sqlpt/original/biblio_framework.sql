@@ -1,28 +1,28 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES latin1 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- UNLOCK TABLES;
--- delete from biblio_framework;
--- LOCK TABLES `biblio_framework` WRITE;
+--
+-- Dumping data for table `biblio_framework`
+--
+UNLOCK TABLES;
+delete from biblio_framework;
+LOCK TABLES `biblio_framework` WRITE;
 
 /*!40000 ALTER TABLE `biblio_framework` DISABLE KEYS */;
 
-INSERT INTO `biblio_framework` 
-(`frameworkcode`, `frameworktext`)
-VALUES
+INSERT INTO `biblio_framework` VALUES
 ('AMN','Analíticos de monografias'),
 ('ANL','Analíticos de periódicos'),
 ('MNL','Material não Livro'),
 ('MON','Monografias'),
-('PER','Periódicos (Recursos contínuos)')
-on duplicate key update frameworkcode=values(frameworkcode), frameworktext=values(frameworktext);
+('PER','Periódicos (Recursos contínuos)');
 
 /*!40000 ALTER TABLE `biblio_framework` ENABLE KEYS */;
 UNLOCK TABLES;
