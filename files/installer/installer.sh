@@ -32,7 +32,7 @@ run_webinstaller() {
       UNIMARC)
         MARCTAGSTRUCTURE=`echo -n "SELECT COUNT(*) FROM koha_$KOHA_INSTANCE.marc_tag_structure where tagfield = 200;" | koha-mysql $KOHA_INSTANCE | tail -1`
         ;;
-      # TODO add NORMARK clause  
+      # TODO add other(s) clause(s)  
       *)
           RESULT="MARC_FLAVOUR: $KOHA_MARC_FLAVOUR not found!"
           exit 1  

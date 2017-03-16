@@ -6,7 +6,7 @@
 insert  into `authorised_values`
   (`id`, `category`, `authorised_value`, `lib`, `lib_opac`, `imageurl`)
  values 
- (1,'SUGGEST','BSELL','Bestseller',NULL,NULL),
+ -- (1,'SUGGEST','BSELL','Bestseller',NULL,NULL),
  (2,'SUGGEST','SCD','Shelf Copy Damaged',NULL,NULL),
  (3,'SUGGEST','LCL','Library Copy Lost',NULL,NULL),
  (4,'SUGGEST','AVILL','Available via ILL',NULL,NULL),
